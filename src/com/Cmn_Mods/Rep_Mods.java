@@ -227,37 +227,6 @@ public class Rep_Mods
 	}
 
 // verbose
-	/** TODO: Add SuccessfulPasses explaination
-	 * Verbose - Visual | Anywhere VB is req
-	 * *------------------------------------*
-	 * Mostly a test mod
-	 * ======================================
-	 * This mod takes in a string for visual feedback,
-	 * two stings that will be used to check against
-	 * each other.
-	 * If both strings match, depending on the verbose
-	 * level set, user can see more detailed info on
-	 * what passed or what failed and how/why
-	 * ======================================
-	 * **************************************
-	 * Used to show verification of action
-	 * 	1) will return "Verification passed" in console
-	 * 		if actual String matched expected string
-	 * 	2) will return "Verification failed" in console
-	 * 		if actual String did not match expected string
-	 * 		a) Console will also show hardcoded string
-	 * 			and mismatched expected string
-	 * 	**************************************
-	 * 	*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
-	 * 	See docs page for explaination of the
-	 * 	variable "successfulPasses
-	 * 	*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
-	 * 	++++++++++++++++++++++++++++++++++++++
-	 * @param action
-	 * @param expect
-	 * @param actual
-	 * @param isPassW
-	 */
 	protected int verifyPassFail(String action, String expect, String actual, int isPassW)
 	{
 		String starred = mkStars(action, 22, "*");
@@ -306,45 +275,7 @@ public class Rep_Mods
 		}
 		return isSuccessful;
 	}
-	
-	/**
-	 * Verbose - Visual | Anywhere VB is req
-	 * *------------------------------------*
-	 * Mostly a test mod
-	 * ======================================
-	 * This mod takes in a string for visual feedback,
-	 * THREE stings that will be used to check against
-	 * each other; one is the actual, which will be
-	 * checked against TWO possible expected
-	 * If the actual string matches either of
-	 * strings depending on the verbose level
-	 * set, user can see more detailed info on
-	 * what passed or what failed and how/why
-	 * ======================================
-	 * **************************************
-	 * (same as verifyPassFail, but for
-	 * 	multiple expected strings)
-	 * Used to show verification of action
-	 * 	1) will return "Verification passed" in
-	 * 		console if actual String matched
-	 * 		expected string
-	 * 	2) will return "Verification failed" in
-	 * 		console if actual String did not
-	 * 		match expected string
-	 * 		a) Console will also show hardcoded
-	 * 			string and mismatched expected
-	 * 			string
-	 * **************************************
-	 * *#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
-	 * See docs page for explaination of
-	 * the variable "successfulPasses
-	 * *#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
-	 * ++++++++++++++++++++++++++++++++++++++
-	 * @param action
-	 * @param mactual
-	 * @param mexpect
-	 * @param mexpect2
-	 */
+
 	protected int verifyMultiPassFail(String action, String mactual, String mexpect, String mexpect2)
 	{
 		String starred = mkStars(action, 22, "*");
@@ -426,45 +357,10 @@ public class Rep_Mods
 				runningStarOuter + "\n");
 		
 	}
-	
-	/**
-	 * Visual - Menu | Main Demo Hub
-	 * *----------------------------*
-	 * If you haven't logged in, this pops up
-	 * =======================================
-	 * Module is called to simply let user know
-	 * they can't complete a specific portion
-	 * of the demo until they have logged
-	 * in to the website
-	 */
-	protected void CantUntilLoggedIn()
-	{
-		String cantUseModMessage = "<# You cannot run this test until you have successfully logged in";
-		Object runningStar = mkStars(cantUseModMessage, 0, "!");
-		System.out.println("\n" + runningStar + cantUseModMessage + "\n" + runningStar + "\n");
-	}
 
 // Data validation modules
 	//Add ability to turn off/on verbose - complete
-	/**
-	 * Data Validation | MenusAndDialog && Test_Login
-	 * *---------------------------------------------*
-	 * Data validation for user answers
-	 * ===============================================
-	 * Reduces an answer down to the len-variable
-	 * character after going through a crucible
-	 * +++++++++++++++++++++++++++++++++++++++++++++++
-	 * *#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
-	 * "reduced = reduced.trim().toLowerCase();"
-	 * WAS FORMERLY SEPARATED BUT I CHAINED THEM ON
-	 * 080317.
-	 * *#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
-	 * @param len
-	 * @param toReduce
-	 * @param passTheStr
-	 * @param toCase
-	 * @return
-	 */
+
 	public String redimeReduceTo (int len, String toReduce, boolean passTheStr, String toCase)
 	{
 		Scanner input = new Scanner(System.in);
@@ -503,23 +399,7 @@ public class Rep_Mods
 		
 		return reduced;
 	}
-	
-	//TODO:PARSE FOR INT -> IF INT; TURN INTO NUMBER
-	/**
-	 * Data Validation | MenusAndDialog
-	 * *-------------------------------*
-	 * This mod checks for numbers
-	 * =================================
-	 * This mod checks an user-input
-	 * answer for one of three things
-	 * 		1) a number; currently 1, 2, 3, 4
-	 * 		2) against an array from Get_Const_Vars
-	 * 		3) none of the above
-	 * and returns an int variable
-	 * +++++++++++++++++++++++++++++++++
-	 * @param str
-	 * @return
-	 */
+
 	protected int checkForNumber(String str)
 	{
 		
@@ -567,18 +447,7 @@ public class Rep_Mods
 		}
 		return isNumber;
 	}
-	
-	/**TODO:Use this for All int binIS types
-	 * NOTQUITE-DATA VALIDATION | Demo_Stats class
-	 * (soon to be everywhere)
-	 * *------------------------------------------*
-	 * ============================================
-	 * Used to convert int-type variables into
-	 * human readable format
-	 * ++++++++++++++++++++++++++++++++++++++++++++
-	 * @param toConvert
-	 * @return
-	 */
+
 	protected static String convertToHuman_StatInfo(int toConvert)
 	{
 		if (toConvert ==0) 	return "Untested";
@@ -591,43 +460,3 @@ public class Rep_Mods
 	}
 	
 }
-
-/**
- * WhatIsIt | WhereIsItLocated
- * *----------*
- * TL;DR
- * ==============
- * Long Description
- * ****************
- * Notes
- * ****************
- * *#*#*#*#*#*#*#*
- * Warning
- * *#*#*#*#*#*#*#*
- * @param nonExistant
- */
-
-//<editor-fold desc="Depreciated">
-//	protected static int checkForSwitch(String str, int[] isVerbArr)
-//	{
-//		Get_Constant_Vars consts = new Get_Constant_Vars();
-//
-//		int isSwitch = 0;		// 0 == no ; 1 == yes
-//		String checkingIfSwitch = str;		// used to make sure it starts fresh everytime
-//
-//		if (checkingIfSwitch.length()<=1) isSwitch = 0;
-//		else {
-//			// trunicated because only the first char of the
-//			// only char this module is interested in
-//			checkingIfSwitch = String.valueOf(str.charAt(1));
-//			// debugging
-//			if (isVerbArr[1] == 1) {
-//				System.out.println("checkForSwi - checkingIfSwitch: " + checkingIfSwitch);
-//			}
-//
-//			if (checkingIfSwitch.equals("-")) {
-//				isSwitch = 1;
-//			}
-//		}
-//	}
-//</editor-fold>
