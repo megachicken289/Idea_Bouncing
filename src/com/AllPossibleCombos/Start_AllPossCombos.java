@@ -31,7 +31,7 @@ public class Start_AllPossCombos
         System.out.println("Here is all possible combinations, assuming order is not important");
         // shows all possible combos,
 
-        System.out.println("Here is all possible permutations, assuming order is not important");
+        System.out.println("Here is all possible permutations, assuming order is important");
         // shows all possible perma,
 
 
