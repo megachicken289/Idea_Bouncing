@@ -1,3 +1,4 @@
+import com.AllPossibleCombos.Start_AllPossCombos;
 import com.Cmn_Mods.Get_Constants_Vars;
 import com.Data_Validation_Program.DVP_Main;
 import com.Quick_Projects.Martyr2_Projects;
@@ -12,8 +13,11 @@ public class Main_Testing_Class
 		DVP_Main dvpM = new DVP_Main();
 		Martyr2_Projects m2p = new Martyr2_Projects();
 		Get_Constants_Vars consts = new Get_Constants_Vars();
+		Start_AllPossCombos apc = new Start_AllPossCombos();
 		//dvpM.DVP_Setup();
-		
+
+		apc.APC_Setup();
+
 		for (int i = 0; i<consts.getConstArrItems().length; i++) {
 			m2p.Reverse_A_String(consts.getConstArrItems()[i]);
 		}
