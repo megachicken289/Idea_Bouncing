@@ -7,6 +7,7 @@ public class Start_Weirdo_Machine
     Rep_Mods mods = new Rep_Mods();
     protected void Suicide_SetUp()
     {
+        WM_Intro();
         System.out.println("SO, you want to kill yourself" +
                 "Want to go with the classic Russian Rulette [Y/N]:");
         String isRulette_State = mods.redimeReduceTo(1, "", false, "low");
@@ -20,6 +21,11 @@ public class Start_Weirdo_Machine
                 "our suicide services.\n" +
                 "From the list of personal and carefully curated list\n" +
                 "");
+    }
+
+    protected void WM_Intro()
+    {
+
     }
 
     protected void StartRulleteMiniGame()
