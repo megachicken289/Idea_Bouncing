@@ -1,6 +1,6 @@
-package com.CmnEnum;
+package com.CmnEnumArrs;
 
-public class Rep_Enums
+class Rep_Enums
 {
     enum colors {
         red,
