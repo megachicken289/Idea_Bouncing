@@ -75,7 +75,7 @@ public class Start_AllPossCombos
 
     protected void Calculate_NCR()
     {
-
+        // test
     }
 
     protected void Calculate_NPR()
