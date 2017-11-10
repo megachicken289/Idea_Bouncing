@@ -37,9 +37,15 @@ public class Start_AllPossCombos
         System.out.printf("Do you know if any numbers repeat [Y/N]: ");
         String repeatingNumbers = mods.redimeReduceTo(1, "", false,"low");
         if (repeatingNumbers.equals("y")) {
-            System.out.println("Here is all possible combinations, assuming order is not important");
-            // shows all possible combos,
-            System.out.printf("probability for combo: " + Calculate_NCR(maxNumbAllowed,howManyDigits) + "\n");
+            System.out.printf("Is the order of the numbers important[Y/N]: ");
+            String isOrder_State = mods.redimeReduceTo(1, "", false,"low");
+            if (isOrder_State.equals("y")) {
+                System.out.printf("Here is all possible combinations, assuming order is not impo");
+
+            } else if (isOrder_State.equals("n")) {
+                System.out.println("Here is all possible combinations, assuming order is not important; Repetition not allowed");
+                System.out.printf("probability for combo: " + Calculate_NCR(maxNumbAllowed,howManyDigits) + "\n");
+            }
         } else if (repeatingNumbers.equals("n")) {
             System.out.println("Here is all possible permutations, assuming order is important\nRepetition not allowed");
             // shows all possible perma,

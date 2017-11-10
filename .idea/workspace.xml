@@ -4,7 +4,6 @@
     <list default="true" id="7ee6a37f-a111-48ba-970b-281fa477ce2f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/AllPossibleCombos/Start_AllPossCombos.java" afterPath="$PROJECT_DIR$/src/com/AllPossibleCombos/Start_AllPossCombos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Cmn_Mods/Rep_Mods.java" afterPath="$PROJECT_DIR$/src/com/Cmn_Mods/Rep_Mods.java" />
     </list>
     <ignored path="Idea_Bouncing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,11 +57,13 @@
       <file leaf-file-name="Start_AllPossCombos.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/AllPossibleCombos/Start_AllPossCombos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1688">
-              <caret line="134" column="35" lean-forward="true" selection-start-line="134" selection-start-column="35" selection-end-line="134" selection-end-column="35" />
+            <state relative-caret-position="583">
+              <caret line="43" column="16" lean-forward="false" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#sanitizeMaxNumb#0;class#Start_AllPossCombos#0" expanded="false" />
                 <element signature="method#DigitsAndTheirPlace#0;class#Start_AllPossCombos#0" expanded="false" />
+                <element signature="method#DigitsWithoutTheirPlace#0;class#Start_AllPossCombos#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -772,7 +773,7 @@
       <workItem from="1509775172469" duration="352000" />
       <workItem from="1509775528723" duration="1838000" />
       <workItem from="1509817083237" duration="12080000" />
-      <workItem from="1510332122233" duration="6437000" />
+      <workItem from="1510332122233" duration="6963000" />
     </task>
     <task id="LOCAL-00001" summary="fixed Ignore">
       <created>1509775505611</created>
@@ -837,11 +838,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510332632776</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added more to Start_AllPossCombos.java">
+      <created>1510338635435</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1510338635435</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23459000" />
+    <option name="totallyTimeSpent" value="23985000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1862" height="1096" extended-state="6" />
@@ -900,7 +908,8 @@
     <MESSAGE value="Created Start_AllPossCombos.java" />
     <MESSAGE value="Added mord code to Start_AllPossibleCombos" />
     <MESSAGE value="testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing" />
+    <MESSAGE value="Added more to Start_AllPossCombos.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more to Start_AllPossCombos.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -989,7 +998,9 @@
           <caret line="75" column="33" lean-forward="false" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#sanitizeMaxNumb#0;class#Start_AllPossCombos#0" expanded="false" />
             <element signature="method#DigitsAndTheirPlace#0;class#Start_AllPossCombos#0" expanded="false" />
+            <element signature="method#DigitsWithoutTheirPlace#0;class#Start_AllPossCombos#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1215,11 +1226,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/AllPossibleCombos/Start_AllPossCombos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1688">
-          <caret line="134" column="35" lean-forward="true" selection-start-line="134" selection-start-column="35" selection-end-line="134" selection-end-column="35" />
+        <state relative-caret-position="583">
+          <caret line="43" column="16" lean-forward="false" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#sanitizeMaxNumb#0;class#Start_AllPossCombos#0" expanded="false" />
             <element signature="method#DigitsAndTheirPlace#0;class#Start_AllPossCombos#0" expanded="false" />
+            <element signature="method#DigitsWithoutTheirPlace#0;class#Start_AllPossCombos#0" expanded="false" />
           </folding>
         </state>
       </provider>
