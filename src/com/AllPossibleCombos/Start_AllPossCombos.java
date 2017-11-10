@@ -14,11 +14,17 @@ public class Start_AllPossCombos
 
 //        int[] digitWithOutPlaceholders = new int[];   // add with DigitsWithoutTheirPlace
 
-        System.out.println("How many digits is the combo: ");
+        System.out.printf("How many digits is the combo: ");
         int howManyDigits = input.nextInt();
         int[] digitPlaceholders = new int[howManyDigits];
 
-        System.out.println("Do you know any digits (and possibly their place) [Y/N]: ");
+        System.out.printf( "What is the max number allowed for any digit\n" +
+                            "Type \'0\' for 0-9. Type any other number for\n" +
+                "any other size: ");
+        int maxNumbAllowed = input.nextInt();
+        maxNumbAllowed = sanitizeMaxNumb(input, maxNumbAllowed);
+
+        System.out.printf("Do you know any digits (and possibly their place) [Y/N]: ");
         String userHasDigits = mods.redimeReduceTo(1,"",false,"low");
         DigitsAndTheirPlace(userHasDigits, digitPlaceholders);
 
@@ -28,13 +34,29 @@ public class Start_AllPossCombos
         DigitsWithoutTheirPlace(userHasDigWOPlace, digitWithOutPlaceholders);
 /**/
 
-        System.out.println("Here is all possible combinations, assuming order is not important");
-        // shows all possible combos,
+        System.out.printf("Do you know if any numbers repeat [Y/N]: ");
+        String repeatingNumbers = mods.redimeReduceTo(1, "", false,"low");
+        if (repeatingNumbers.equals("y")) {
+            System.out.println("Here is all possible combinations, assuming order is not important");
+            // shows all possible combos,
+            System.out.printf("probability for combo: " + Calculate_NCR(maxNumbAllowed,howManyDigits) + "\n");
+        } else if (repeatingNumbers.equals("n")) {
+            System.out.println("Here is all possible permutations, assuming order is important\nRepetition not allowed");
+            // shows all possible perma,
+            System.out.printf("probability for combo: " + Calculate_NPR(maxNumbAllowed, howManyDigits) + "\n");
+        }
+    }
 
-        System.out.println("Here is all possible permutations, assuming order is important");
-        // shows all possible perma,
-
-
+    protected int sanitizeMaxNumb(Scanner input, int numb)
+    {
+        while (numb>=9 || numb<0) {
+            System.out.printf("Please enter a number between 0 and 9: ");
+            numb=input.nextInt();
+        }
+        if (numb == 0) {
+            numb = 10;
+        }
+        return numb;
     }
 
     protected void DigitsAndTheirPlace(String userHasDigits, int[] digitPlaceholders)
@@ -73,13 +95,43 @@ public class Start_AllPossCombos
         }
     }
 
-    protected void Calculate_NCR()
+    protected int Calculate_NCR(int n, int r)
     {
-        // test
+        // order not important, rep not allowed
+        // formula for combination
+        // n!/r!(n-r)!
+        int nF = mods.factorial(n);
+        int rF = mods.factorial(r);
+        int nrF = mods.factorial((n-r));
+        return nF/(rF*(nrF));
+}
+
+    protected int Calculate_NPR(int n, int r)
+    {
+        // order important, rep not allowed
+        // formula for combination
+        // n!/(n-r)!
+        int nF = mods.factorial(n);
+        int nrF = mods.factorial(n-r);
+        return nF/nrF;
     }
 
-    protected void Calculate_NPR()
+    protected int Calculate_NoOrder_YesRep(int n, int r)
     {
+        // order not important, rep allowed
+        // formula for
+        // (r+n-1)!/r!(r-1)!
+        int top = mods.factorial((r+n-1));
+        int rF  = mods.factorial(r);
+        int bot = mods.factorial((n-1));
+        return top/(rF*bot);
+    }
 
+    protected int Calculate_YesOrder_YesRep(int n, int r)
+    {
+        // order not important, rep allowed
+        // formula for
+        // (r+n-1)!/r!(r-1)!
+        return (int) Math.pow(n,r);
     }
 }

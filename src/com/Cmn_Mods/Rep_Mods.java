@@ -458,5 +458,17 @@ public class Rep_Mods
 		else if (toConvert ==99)	return "Not Available";
 		else 					return "ERR";
 	}
-	
+
+	public int factorial(int num)
+	{
+		if (num == 0) {
+			return 1;
+		}
+		int fact = 1; // this  will be the result
+		for (int i = 1; i <= num; i++) {
+			fact *= i;
+		}
+		return fact;
+	}
+
 }
