@@ -12,45 +12,28 @@ public class Start_AllPossCombos
     {
         Scanner input = new Scanner(System.in);
 
-//        int[] digitWithOutPlaceholders = new int[];   // add with DigitsWithoutTheirPlace
+        
 
         System.out.printf("How many digits is the combo: ");
         int howManyDigits = input.nextInt();
         int[] digitPlaceholders = new int[howManyDigits];
-
+		
         System.out.printf( "What is the max number allowed for any digit\n" +
                             "Type \'0\' for 0-9. Type any other number for\n" +
                 "any other size: ");
         int maxNumbAllowed = input.nextInt();
         maxNumbAllowed = sanitizeMaxNumb(input, maxNumbAllowed);
+		int[] digitWithOutPlaceholders = new int[maxNumbAllowed];   // add with DigitsWithoutTheirPlace
 
         System.out.printf("Do you know any digits (and possibly their place) [Y/N]: ");
         String userHasDigits = mods.redimeReduceTo(1,"",false,"low");
         DigitsAndTheirPlace(userHasDigits, digitPlaceholders);
-
-/*// add with DigitsWithoutTheirPlace
+		
         System.out.printf("Do you know any digits, but not their place [Y/N]: ");
         String userHasDigWOPlace = mods.redimeReduceTo(1,"", false,"low");
-        DigitsWithoutTheirPlace(userHasDigWOPlace, digitWithOutPlaceholders);
-/**/
+        digitWithOutPlaceholders = DigitsWithoutTheirPlace(userHasDigWOPlace, digitWithOutPlaceholders);
 
-        System.out.printf("Do you know if any numbers repeat [Y/N]: ");
-        String repeatingNumbers = mods.redimeReduceTo(1, "", false,"low");
-        if (repeatingNumbers.equals("y")) {
-            System.out.printf("Is the order of the numbers important[Y/N]: ");
-            String isOrder_State = mods.redimeReduceTo(1, "", false,"low");
-            if (isOrder_State.equals("y")) {
-                System.out.printf("Here is all possible combinations, assuming order is not impo");
-
-            } else if (isOrder_State.equals("n")) {
-                System.out.println("Here is all possible combinations, assuming order is not important; Repetition not allowed");
-                System.out.printf("probability for combo: " + Calculate_NCR(maxNumbAllowed,howManyDigits) + "\n");
-            }
-        } else if (repeatingNumbers.equals("n")) {
-            System.out.println("Here is all possible permutations, assuming order is important\nRepetition not allowed");
-            // shows all possible perma,
-            System.out.printf("probability for combo: " + Calculate_NPR(maxNumbAllowed, howManyDigits) + "\n");
-        }
+		determineRepeatAndOrder(maxNumbAllowed, howManyDigits);
     }
 
     protected int sanitizeMaxNumb(Scanner input, int numb)
@@ -85,11 +68,11 @@ public class Start_AllPossCombos
         }
     }
 
-    protected void DigitsWithoutTheirPlace(String userHasDigWOPlace, int[] digitWithOutPlaceholders)
+    protected int[] DigitsWithoutTheirPlace(String userHasDigWOPlace, int[] digitWithOutPlaceholders)
     {
         Scanner input = new Scanner(System.in);
 
-        while (userHasDigWOPlace.equals("y")) {
+        while (!userHasDigWOPlace.equals("n")) {
             int tempCount = 0;
             System.out.printf("Add digit: ");
             int addedDigit = input.nextInt();
@@ -99,9 +82,47 @@ public class Start_AllPossCombos
             System.out.printf("DO you have any more digits to add [Y/N]: ");
             userHasDigWOPlace = mods.redimeReduceTo(1,"",false,"low");
         }
+        
+        return digitWithOutPlaceholders;
     }
-
-    protected int Calculate_NCR(int n, int r)
+    
+    protected void determineRepeatAndOrder (int maxNumbAllowed, int howManyDigits)
+	{
+		System.out.printf("Do you know if any numbers repeat [Y/N]: ");
+		String repeatingNumbers = mods.redimeReduceTo(1, "", false,"low");
+		if (repeatingNumbers.equals("y"))
+		{
+			System.out.println("Numbers DO Repeat");
+			System.out.printf("Is the order of the numbers important [Y/N]: ");
+			String isOrder_State = mods.redimeReduceTo(1, "", false,"low");
+			if (isOrder_State.equals("y")) {
+				System.out.println("Order IS important");
+				System.out.println("Here is all possible combinations, assuming order is important");
+				System.out.println("Probability for combo: " + Calculate_NPR_YesOrder_YesRep(maxNumbAllowed, howManyDigits));
+			} else if (isOrder_State.equals("n")) {
+				System.out.println("Order IS NOT important");
+				System.out.println("Here is all possible combinations, assuming order is not important; Repetition not allowed");
+				System.out.println("probability for combo: " + Calculate_NCR_NoOrder_YesRep(maxNumbAllowed,howManyDigits) + "\n");
+			}
+		} else if (repeatingNumbers.equals("n"))
+		{
+			System.out.println("Numbers DO NOT Repeat");
+			System.out.printf("Is the order of the numbers important [Y/N]: ");
+			String isOrder_State = mods.redimeReduceTo(1, "", false, "low");
+			if (isOrder_State.equals("y")) {
+				System.out.println("Order IS important");
+				System.out.println("Here is all possible permutations, assuming order is important\nRepetition not allowed");
+				System.out.println("probability for combo: " + Calculate_NPR_YesOrder_NoRep(maxNumbAllowed, howManyDigits) + "\n");
+			} else if (isOrder_State.equals("n")) {
+				System.out.println("Order IS NOT important");
+				System.out.println("Here is all possible permutations, assuming order is not important\nRepetition is not allowed");
+				System.out.println("probability for combo: " + Calculate_NCR_NoOrder_NoRep(maxNumbAllowed, howManyDigits) + "\n");
+			}
+			
+		}
+	}
+    
+    protected int Calculate_NCR_NoOrder_NoRep (int n, int r)
     {
         // order not important, rep not allowed
         // formula for combination
@@ -112,7 +133,7 @@ public class Start_AllPossCombos
         return nF/(rF*(nrF));
 }
 
-    protected int Calculate_NPR(int n, int r)
+    protected int Calculate_NPR_YesOrder_NoRep (int n, int r)
     {
         // order important, rep not allowed
         // formula for combination
@@ -122,7 +143,7 @@ public class Start_AllPossCombos
         return nF/nrF;
     }
 
-    protected int Calculate_NoOrder_YesRep(int n, int r)
+    protected int Calculate_NCR_NoOrder_YesRep (int n, int r)
     {
         // order not important, rep allowed
         // formula for
@@ -133,7 +154,7 @@ public class Start_AllPossCombos
         return top/(rF*bot);
     }
 
-    protected int Calculate_YesOrder_YesRep(int n, int r)
+    protected int Calculate_NPR_YesOrder_YesRep (int n, int r)
     {
         // order not important, rep allowed
         // formula for
