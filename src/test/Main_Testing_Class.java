@@ -18,7 +18,7 @@ public class Main_Testing_Class
 		Combo_AutoUnlock cau = new Combo_AutoUnlock();
 		//dvpM.DVP_Setup();
 		
-		cau.Test_Lock();
+//		cau.Test_Lock();
 
 		apc.APC_Setup();
 

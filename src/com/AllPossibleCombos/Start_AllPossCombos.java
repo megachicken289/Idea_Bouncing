@@ -31,29 +31,28 @@ public class Start_AllPossCombos
 		while (!userHasInput.equals("n")){
 			int kp = KnowPlace();
 			int kd = KnowDigit();
-			digitPlaceholders_Arr[kp+1] = kd;		// w[][][kd][]
+			digitPlaceholders_Arr[kp-1] = kd;		// w[][][kd][]
 			ShowDigitsAndPlaces(digitPlaceholders_Arr, digitWithOutPlaceholders_Arr, howManyDigits);
 			userInputCount++;
-			System.out.printf("DO you have any more digits to add [Y/N]: ");
+			System.out.printf("DO you have any more digits and places to add [Y/N]: ");
 			userHasInput = mods.redimeReduceTo(1,"",false,"low");
 		}
+		
         System.out.printf("Do you know any digits, but not their place [Y/N]: ");
         userHasInput = mods.redimeReduceTo(1,"", false,"low");
 		int count = 0;
 		while (!userHasInput.equals("n")) {
 			int kd = KnowDigit();
-			while (count<=maxNumbAllowed-userInputCount) {
-				if (count>maxNumbAllowed-userInputCount) {
-					System.out.println("You have entered all possible numbers");
-					ShowDigitsAndPlaces(digitPlaceholders_Arr, digitWithOutPlaceholders_Arr, howManyDigits);
-					userHasInput = "n";
-					break;
-				} else {
-					digitWithOutPlaceholders_Arr[count] = kd; // wo[kd1][kd2][kd3][kd4]
-					ShowDigitsAndPlaces(digitPlaceholders_Arr, digitWithOutPlaceholders_Arr, howManyDigits);
-					System.out.printf("DO you have any more digits to add [Y/N]: ");
-					userHasInput = mods.redimeReduceTo(1, "", false, "low");
-				}
+			if (count>maxNumbAllowed-userInputCount) {	// cant seem to get this to work
+				System.out.println("You have entered all possible numbers");
+				ShowDigitsAndPlaces(digitPlaceholders_Arr, digitWithOutPlaceholders_Arr, howManyDigits);
+				userHasInput = "n";
+			} else {
+				digitWithOutPlaceholders_Arr[count] = kd; // wo[kd1][kd2][kd3][kd4]
+				ShowDigitsAndPlaces(digitPlaceholders_Arr, digitWithOutPlaceholders_Arr, howManyDigits);
+				count++;
+				System.out.printf("DO you have any more digits to add [Y/N]: ");
+				userHasInput = mods.redimeReduceTo(1, "", false, "low");
 			}
 		}
 		
@@ -100,7 +99,7 @@ public class Start_AllPossCombos
 		for (int j=0; j < howManyDigits; j++) {
 			System.out.printf("[" + digitWithOutPlaceholder[j] + "]");
 		}
-		System.out.println("");
+		System.out.println("\n");
 	}
 	
 	@Deprecated
