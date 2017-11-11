@@ -2,17 +2,18 @@ package com.AllPossibleCombos;
 
 public class Combo_AutoUnlock
 {
-    public static void main(String[] args) {
+    public void Test_Lock ()
+    {
         // TODO code application logic here
         double combination = Math.random();
-        combination = (int)(combination*100000);
+        combination = (int) (combination * 100000);
         combination = Math.round(combination);
         System.out.println(combination);
-        for (int i = 0; i<=100000;i++) {
+        for (int i = 0; i <= 100000; i++) {
             System.out.println(i);
-            if (i==combination) {
+            if (i == combination) {
                 System.out.println("Passcode found: " + i);
-                break;
+                break;  // keep, otherwise will continue to the end
             }
         }
     }

@@ -3,6 +3,7 @@ package com.AllPossibleCombos;
 import com.Cmn_Mods.Rep_Mods;
 
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class Start_AllPossCombos
 {
@@ -12,27 +13,30 @@ public class Start_AllPossCombos
     {
         Scanner input = new Scanner(System.in);
 
-        
-
         System.out.printf("How many digits is the combo: ");
         int howManyDigits = input.nextInt();
-        int[] digitPlaceholders = new int[howManyDigits];
+        int[][] digitPlaceholders_Arr = new int[howManyDigits][howManyDigits];
 		
         System.out.printf( "What is the max number allowed for any digit\n" +
                             "Type \'0\' for 0-9. Type any other number for\n" +
-                "any other size: ");
+                			"any other size: ");
         int maxNumbAllowed = input.nextInt();
         maxNumbAllowed = sanitizeMaxNumb(input, maxNumbAllowed);
-		int[] digitWithOutPlaceholders = new int[maxNumbAllowed];   // add with DigitsWithoutTheirPlace
+		int[] digitWithOutPlaceholders_Arr = new int[maxNumbAllowed];   // add with DigitsWithoutTheirPlace
 
-        System.out.printf("Do you know any digits (and possibly their place) [Y/N]: ");
-        String userHasDigits = mods.redimeReduceTo(1,"",false,"low");
-        DigitsAndTheirPlace(userHasDigits, digitPlaceholders);
+        System.out.printf("Do you know any digits, and their place [Y/N]: ");
+        String userHasInput = mods.redimeReduceTo(1,"",false,"low");
+		while (!userHasInput.equals("n")){
+			digitPlaceholders_Arr = DigitsAndTheirPlace(digitPlaceholders_Arr);
+		}
+		userHasInput = "";
 		
         System.out.printf("Do you know any digits, but not their place [Y/N]: ");
         String userHasDigWOPlace = mods.redimeReduceTo(1,"", false,"low");
-        digitWithOutPlaceholders = DigitsWithoutTheirPlace(userHasDigWOPlace, digitWithOutPlaceholders);
-
+		while (!userHasInput.equals("n")) {
+			digitWithOutPlaceholders_Arr = DigitsWithoutTheirPlace(userHasDigWOPlace, digitWithOutPlaceholders_Arr);
+		}
+		
 		determineRepeatAndOrder(maxNumbAllowed, howManyDigits);
     }
 
@@ -47,26 +51,49 @@ public class Start_AllPossCombos
         }
         return numb;
     }
-
-    protected void DigitsAndTheirPlace(String userHasDigits, int[] digitPlaceholders)
+    
+    protected void RepeatTillExit(String method, int userHasDigits, int[] digitPlaceholders_Arr)
+	{
+		String userHasInput = "";
+		while (!userHasInput.equals("n")) {
+			if (method.equals("with")){
+//				DigitsAndTheirPlace(digitPlaceholders_Arr);
+			} else if (method.equals("without")) {
+				
+			}
+			System.out.printf("DO you have any more digits to add [Y/N]: ");
+			userHasInput = mods.redimeReduceTo(1,"",false,"low");
+		}
+	}
+	
+	protected int[][] DigitsAndTheirPlace(int[][] digitPlaceholders)
     {
-        Scanner input = new Scanner(System.in);
+        int kp = KnowPlace();
+		int kd = KnowDigit();
+		
+//		digitPlaceholders[kp][kd];
+		mods.qDeb("digitPlaceHolders[" + kp + "]", kd );
 
-        while (userHasDigits.equals("y")) {
-            System.out.println("What place is the digit: ");
-            int tempDigitPlace = input.nextInt();
-
-            System.out.printf("What is the digit: ");
-            int tempDigitNumb = input.nextInt();
-
-            digitPlaceholders[tempDigitPlace] = tempDigitNumb;
-            mods.qDeb("digitPlaceHolders[" + tempDigitPlace + "]", tempDigitNumb );
-
-            // at the end ; when user enters digit
-            System.out.printf("DO you have any more digits to add [Y/N]: ");
-            userHasDigits = mods.redimeReduceTo(1,"",false,"low");
-        }
+		// at the end ; when user enters digit
+		System.out.printf("DO you have any more digits to add [Y/N]: ");
+	
+	return digitPlaceholders;
     }
+    protected int KnowDigit()
+	{
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("What is the digit: ");
+		return input.nextInt();
+	}
+	
+	protected int KnowPlace()
+	{
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("What place is the digit: ");
+		return input.nextInt();
+	}
 
     protected int[] DigitsWithoutTheirPlace(String userHasDigWOPlace, int[] digitWithOutPlaceholders)
     {

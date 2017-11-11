@@ -1,3 +1,4 @@
+import com.AllPossibleCombos.Combo_AutoUnlock;
 import com.AllPossibleCombos.Start_AllPossCombos;
 import com.Cmn_Mods.Get_Constants_Vars;
 import com.Data_Validation_Program.DVP_Main;
@@ -14,7 +15,10 @@ public class Main_Testing_Class
 		Martyr2_Projects m2p = new Martyr2_Projects();
 		Get_Constants_Vars consts = new Get_Constants_Vars();
 		Start_AllPossCombos apc = new Start_AllPossCombos();
+		Combo_AutoUnlock cau = new Combo_AutoUnlock();
 		//dvpM.DVP_Setup();
+		
+		cau.Test_Lock();
 
 		apc.APC_Setup();
 
